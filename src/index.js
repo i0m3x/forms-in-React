@@ -1,3 +1,5 @@
+//Ch. 5 Fetching Data 2:06
+
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 
@@ -39,10 +41,10 @@ class Library extends React.Component {
   componentDidMount(){
     this.setState({loading: true})
     fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1')
-      .then(data => data.json())
-      .then(data => this.setState({data, loading: false}))
+      .then(data => data.json()) //consult Evan on why it is one...
+      .then(data => this.setState({data: data, loading: false}))
   }
-  componentDidUpdate() {
+  componentDidUpdate() { //similar to Vue component: watched
     console.log("The component just updated")
   }
   
@@ -51,7 +53,7 @@ class Library extends React.Component {
       open: !prevState.open
     }))
   }
-  render() {
+  render() {  //FIRST place
 
   const {books} = this.props
   return (
